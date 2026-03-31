@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use App\Models\WeatherLog;
 use App\Jobs\FetchWeatherData;
 use Illuminate\Http\Request;
 
@@ -15,7 +14,11 @@ class WeatherController extends Controller
     public function index()
     {
         // Task 1: Fetch all cities with their latest weather log
-        return view('weather.index');
+        $cities = City::with('latestWeatherLog')
+            ->orderBy('name')
+            ->get();
+
+        return view('weather.index', compact('cities'));
     }
 
     /**

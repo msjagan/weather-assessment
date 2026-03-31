@@ -15,4 +15,9 @@ class City extends Model
     {
         return $this->hasMany(WeatherLog::class);
     }
+
+    public function latestWeatherLog()
+    {
+        return $this->hasOne(WeatherLog::class)->latestOfMany('fetched_at');
+    }
 }

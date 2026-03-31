@@ -38,22 +38,23 @@
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Chennai</td>
-                <td>24</td>
-                <td>70%</td>
-                <td>20</td>
-                <td>Cold</td>
-                <td>3 Mins Ago</td>
-            </tr>
-            <tr>
-                <td>London</td>
-                <td>12</td>
-                <td>80%</td>
-                <td>10</td>
-                <td>Cold</td>
-                <td>5 Mins Ago</td>
-            </tr>
+            @forelse ($cities as $city)
+                @php($log = $city->latestWeatherLog)
+                <tr>
+                    <td>{{ $city->name }}</td>
+                    <td>{{ $log?->temperature ?? '—' }}</td>
+                    <td>{{ $log?->humidity ?? '—' }}</td>
+                    <td>{{ $log?->wind_speed ?? '—' }}</td>
+                    <td>{{ $log?->description ?? '—' }}</td>
+                    <td>
+                        {{ $log?->fetched_at?->diffForHumans() ?? '—' }}
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No cities available.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>
