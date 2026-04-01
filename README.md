@@ -7,6 +7,7 @@
 - Modifed the WeatherLog model and SendWeatherNotification to log the custom weather alert based on the condition of 3 degree change
 - Ran the queue:work to log the weather alert as the ShouldQueue is mentioned in the SendWeatherNotification
 
+
 Note: To check the custom log file named "weather-log" is created and listner works , please comment out the line no 43 and 45 on WeatherLog model to check it immediately. 
 
 ### Task 1: Display latest weather data in the view
