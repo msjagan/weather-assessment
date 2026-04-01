@@ -1,6 +1,6 @@
 # Laravel Weather App Assessment 
 
-# Steps I followed
+# Steps I followed to finish the tasks
 - Ran the CitySeeder to populate the cities on index page table
 - Added the mapped the open weather API key to services.php
 - Validated the weather log data
