@@ -24,6 +24,7 @@ class SendWeatherNotification implements ShouldQueue
         $message = "[WeatherAlert] {$change} detected in {$city} | Old: {$old}°C | New: {$new}°C";
 
         // Log to laravel.log
-        Log::info($message);
+        // Custom log channel for weather alerts
+        Log::channel('weather_alerts')->info($message);
     }
 }
